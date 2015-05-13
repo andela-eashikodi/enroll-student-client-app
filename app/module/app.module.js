@@ -8,6 +8,10 @@ App.config(['$routeProvider', function($routeProvider){
     templateUrl: 'app/view/homeview.html',
     controller: 'EnrollCtrl'
   }).
+  when('/sign',{
+    templateUrl: 'app/view/adminview.html',
+    controller : 'AdminCtrl'
+  }).
   otherwise({
     redirectTo: '/home'
   });

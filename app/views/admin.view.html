@@ -5,15 +5,18 @@
         <h1 class="md-toolbar-tools">MENU</h1>
       </md-toolbar>
         <md-button>
-          <md-list-item ng-click="add()">
+          <md-list-item ui-sref = ".create">
           Create Student
           </md-list-item>
         </md-button>
         <md-button>
-          <md-list-item ng-click="add()">
+          <md-list-item ui-sref = ".list">
           list Student
           </md-list-item>
         </md-button>
     </md-sidenav>
+    <md-content flex layout-padding>
+      <div ui-view></div>
+    </md-content>
   </section>
 </div>

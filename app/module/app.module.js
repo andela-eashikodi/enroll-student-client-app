@@ -1,18 +1,22 @@
 'use strict';
 
-var App = angular.module('Enroll', ['ngRoute', 'ngMaterial']);
+var App = angular.module('Enroll', ['ui.router', 'ngMaterial']);
 
-App.config(['$routeProvider', function($routeProvider){
-  $routeProvider.
-  when('/login',{
-    templateUrl: 'app/views/home.view.html',
-    controller: 'EnrollCtrl'
-  }).
-  when('/admin',{
-    templateUrl: 'app/views/admin.view.html',
-    controller : 'EnrollCtrl'
-  }).
-  otherwise({
-    redirectTo: '/login'
-  });
-}]);
+App.config(function($stateProvider, $urlRouterProvider){
+
+  $urlRouterProvider.otherwise('/admin');
+
+  $stateProvider
+    .state('login',{
+      url: '/login',
+      templateUrl: 'app/views/login.view.html'
+    })
+    .state('admin', {
+      url: '/admin',
+      templateUrl: 'app/views/admin.view.html'
+    })
+    .state('admin.create',{
+      url: '/create',
+      templateUrl: 'app/views/create.view.html'
+    });
+});

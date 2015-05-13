@@ -1,6 +1,6 @@
 logs/*
 node_modules/
-bower_components/
+libs/
 !gitkeep
 tmp
 .DS_Store

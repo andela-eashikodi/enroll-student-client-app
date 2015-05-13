@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Enroll">
 <head>
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic">
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" href="libs/angular-material/angular-material.min.css">
   <meta name="viewport" content="initial-scale=1" />
   <title>FRONT_END</title>
 </head>
-<body>
-
-<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="./bower_components/angular-animate/angular-animate.js"></script>
-<script type="text/javascript" src="./bower_components/angular-aria/angular-aria.js"></script>
-<script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
-
+<body layout = "column">
+<md-toolbar class = "md-hue-2" layout="row">
+  <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Student-Enroll</h1>
+</md-toolbar>
+<div ng-view></div>
+<script type="text/javascript" src="app/js/jquery.js"></script>
+<script type="text/javascript" src="libs/angular/angular.js"></script>
+<script type="text/javascript" src="libs/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="libs/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src="libs/angular-aria/angular-aria.js"></script>
+<script type="text/javascript" src="libs/angular-material/angular-material.js"></script>
+<script type="text/javascript" src="app/module/app.module.js"></script>
+<script type="text/javascript" src="app/controller/app.controller.js"></script>
 </body>
 </html>

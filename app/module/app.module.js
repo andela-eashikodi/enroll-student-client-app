@@ -4,15 +4,15 @@ var App = angular.module('Enroll', ['ngRoute', 'ngMaterial']);
 
 App.config(['$routeProvider', function($routeProvider){
   $routeProvider.
-  when('/home',{
-    templateUrl: 'app/view/homeview.html',
+  when('/login',{
+    templateUrl: 'app/views/home.view.html',
     controller: 'EnrollCtrl'
   }).
-  when('/sign',{
-    templateUrl: 'app/view/adminview.html',
+  when('/admin',{
+    templateUrl: 'app/views/admin.view.html',
     controller : 'EnrollCtrl'
   }).
   otherwise({
-    redirectTo: '/home'
+    redirectTo: '/login'
   });
 }]);

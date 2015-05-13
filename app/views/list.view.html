@@ -1,0 +1,21 @@
+<div>
+  <md-content>
+        <div class="profile"><h2 class="md-title">Student Details</h2></div>
+        <md-divider></md-divider>
+        <md-list>
+          <md-list-item class="md-3-line" ng-repeat="student in list">
+            <img ng-src="{{student.pic}}" id="display-pic">
+            <div class="md-list-item-text" id="detail">
+              <h1>Reg-Number: {{student.regnumber}}</h1>
+              <h1>Firstname:{{student.firstname}}</h1>
+              <h1>Lastname:{{student.lastname}}</h1>
+              <h1>Gender:{{student.gender}}</h1>
+              <h1>State Of Origin:{{student.state}}</h1>
+              <h1>Date Of Origin:{{student.dob}}</h1>
+              <md-divider></md-divider>
+            </div>
+          </md-list-item>
+        </md-list>
+  </md-content>
+</div>
+

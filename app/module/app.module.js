@@ -10,7 +10,7 @@ App.config(['$routeProvider', function($routeProvider){
   }).
   when('/sign',{
     templateUrl: 'app/view/adminview.html',
-    controller : 'AdminCtrl'
+    controller : 'LeftCtrl'
   }).
   otherwise({
     redirectTo: '/home'

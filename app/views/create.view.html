@@ -1,21 +1,42 @@
 <div layout="column">
   <br/>
   <md-content layout-padding class="autoScroll">
-    <md-input-container md-no-float>
-      <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
-      <input ng-model="student.name" type="text" placeholder="Name">
+    <md-input-container >
+      <md-icon md-svg-src="assets/images/report-512px.svg" class="name"></md-icon>
+      <input ng-model="student.regnumber" type="text" placeholder="Registration number ">
     </md-input-container>
-    <md-input-container md-no-float>
+    <md-input-container >
+      <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
+      <input ng-model="student.firstname" type="text" placeholder="First Name">
+    </md-input-container>
+    <md-input-container >
+      <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
+      <input ng-model="student.lastname" type="text" placeholder="Last Name">
+    </md-input-container>
+    <md-input-container >
+      <md-icon md-svg-src="assets/images/gender-512px.svg" class="name"></md-icon>
+      <input ng-model="student.gender" type="text" placeholder="Gender">
+    </md-input-container>
+    <md-input-container >
       <md-icon md-svg-src="assets/images/ic_phone_24px.svg"></md-icon>
       <input ng-model="student.phone" type="text" placeholder="Phone Number">
     </md-input-container>
-    <md-input-container md-no-float>
+    <md-input-container >
       <md-icon md-svg-src="assets/images/ic_email_24px.svg" class="email"></md-icon>
       <input ng-model="student.email" type="email" placeholder="Email (required)" ng-required="true">
     </md-input-container>
-    <md-input-container md-no-float>
+    <md-input-container >
       <md-icon md-svg-src="assets/images/ic_place_24px.svg"></md-icon>
       <input ng-model="student.address" type="text" placeholder="Address" >
     </md-input-container>
+    <md-input-container >
+      <md-icon md-svg-src="assets/images/ic_place_24px.svg"></md-icon>
+      <input ng-model="student.address" type="text" placeholder="State Of Origin" >
+    </md-input-container>
+    <md-input-container >
+      <md-icon md-svg-src="assets/images/calendar.svg"></md-icon>
+      <input ng-model="student.address" type="date" placeholder="Date Of Birth" >
+    </md-input-container>
+    <md-button class="md-raised" href="#">SUBMIT</md-button>
   </md-content>
 </div>

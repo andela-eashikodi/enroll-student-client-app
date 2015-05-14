@@ -13,17 +13,14 @@ App.config(function($stateProvider, $urlRouterProvider){
     })
     .state('admin', {
       url: '/admin',
-      templateUrl: 'app/views/admin.view.html',
-      controller: 'AdminCtrl'
+      templateUrl: 'app/views/admin.view.html'
     })
     .state('admin.create',{
       url: '/create',
-      templateUrl: 'app/views/create.view.html',
-      controller: 'AdminCtrl'
+      templateUrl: 'app/views/create.view.html'
     })
     .state('admin.list', {
       url: '/list',
-      templateUrl: 'app/views/list.view.html',
-      controller: 'AdminCtrl'
+      templateUrl: 'app/views/list.view.html'
     });
 });

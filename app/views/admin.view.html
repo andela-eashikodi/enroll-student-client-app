@@ -1,20 +1,31 @@
-<div layout= "column" id="sidebar">
-  <section layout="row" flex>
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-md')">
+<div ng-controller="AppCtrl" layout="column" style="height:700px">
+
+  <section layout="row" flex="">
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
       <md-toolbar class="md-hue-1">
-        <h1 class="md-toolbar-tools">MENU</h1>
+        <h1 class="md-toolbar-tools">Menu</h1>
       </md-toolbar>
+      <md-content layout-padding="" ng-controller="LeftCtrl">
+        <md-button ng-click="close()" class="md-primary" hide-gt-md="">
+          Close Sidenav Left
+        </md-button>
         <md-button>
           <md-list-item ui-sref = ".create">
-          Create Student
+          Create Student Profile
           </md-list-item>
         </md-button>
         <md-button>
           <md-list-item ui-sref = ".list">
-          list Student
+          View Students Profile
           </md-list-item>
         </md-button>
+      </md-content>
     </md-sidenav>
-    <div ui-view></div>
+
+    <md-content flex="" layout-padding="">
+      <div ui-view></div>
+    </md-content>
   </section>
+
 </div>

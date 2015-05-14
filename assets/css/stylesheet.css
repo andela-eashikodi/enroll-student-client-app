@@ -1,5 +1,6 @@
 #sidebar {
-  height: 900px;
+  min-height: 900px;
+  max-height: auto;
 }
 
 #display-pic {
@@ -13,3 +14,11 @@
 #detail {
   margin-left: 40px;
 }
+
+/*#menu {
+  position: fixed;
+}*/
+
+/*#listview {
+  margin-left: 100px;
+}*/

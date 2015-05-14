@@ -19,6 +19,96 @@ App.controller('AdminCtrl',['$scope', function ($scope){
       gender: 'male',
       state: 'kaduna',
       dob: '11-11-1995'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
+    },
+     {
+      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
+      regnumber:43,
+      firstname:'emeka',
+      lastname: 'ashikodi',
+      gender: 'male',
+      state: 'imo',
+      dob: '11-11-2000'
     }
   ];
 }]);

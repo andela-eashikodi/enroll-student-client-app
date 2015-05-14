@@ -5,47 +5,17 @@
         <md-card-content>
         <md-toolbar>
           <h2 class="md-toolbar-tools">Enter Login Details</h2>
-        </md-toolbar>
+        </md-toolbar><br>
             <md-input-container>
-              <label>Username</label>
-              <br>
-              <input required></input>
-              <br><br>
+              <md-icon md-svg-src="assets/images/man-24-512.svg" class="name"></md-icon>
+              <input ng-model="user.username" type="text" placeholder="Username">
             </md-input-container>
             <md-input-container>
-              <label>Password</label>
-              <input required type="password"></input>
+              <md-icon md-svg-src="assets/images/lock-24-512.svg" class="name"></md-icon>
+              <input ng-model="user.password" type="text" placeholder="Password">
             </md-input-container>
             <md-button class="md-raised" href="/#/admin">LOGIN</md-button>
         </md-card-content>
       </md-card>
     </md-content>
   </div>
-
-<!-- <div>
-  <section layout="row" flex="">
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-      <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">MENU</h1>
-      </md-toolbar>
-      <md-content layout-padding="">
-        <md-button ng-click="close()" class="md-primary" hide-gt-md="">
-          Close Sidenav Left
-        </md-button>
-        <md-button>
-          <md-list-item ui-sref = ".create">
-          Create Student Profile
-          </md-list-item>
-        </md-button>
-        <md-button>
-          <md-list-item ui-sref = ".list">
-          View Students Profile
-          </md-list-item>
-        </md-button>
-    </md-content>
-    </md-sidenav>
-    <md-content flex="" layout-padding="">
-      <div ui-view></div>
-    </md-content>
-  </section>
-</div> -->

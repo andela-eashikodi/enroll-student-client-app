@@ -4,7 +4,7 @@ var App = angular.module('Enroll', ['ui.router', 'ngMaterial']);
 
 App.config(function($stateProvider, $urlRouterProvider){
 
-  $urlRouterProvider.otherwise('/admin');
+  $urlRouterProvider.otherwise('/admin/home');
 
   $stateProvider
     .state('login',{
@@ -18,6 +18,10 @@ App.config(function($stateProvider, $urlRouterProvider){
     .state('admin.create',{
       url: '/create',
       templateUrl: 'app/views/create.view.html'
+    })
+    .state('admin.home', {
+      url: '/home',
+      templateUrl: 'app/views/home.view.html'
     })
     .state('admin.list', {
       url: '/list',

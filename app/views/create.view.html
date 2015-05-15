@@ -1,9 +1,9 @@
-<div layout="column">
+<div layout="column" ng-controller="AdminCtrl">
   <br/>
   <md-content layout-padding class="autoScroll">
-    <md-input-container >
+    <md-input-container layout="row" >
       <md-icon md-svg-src="assets/images/report-512px.svg" class="name"></md-icon>
-      <input ng-model="student.regnumber" type="text" placeholder="Registration number ">
+      <input flex= "15" ng-model="student.regnumber" type="number" placeholder="Registration number ">
     </md-input-container>
     <md-input-container >
       <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
@@ -13,9 +13,14 @@
       <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
       <input ng-model="student.lastname" type="text" placeholder="Last Name">
     </md-input-container>
-    <md-input-container >
-      <md-icon md-svg-src="assets/images/gender-512px.svg" class="name"></md-icon>
-      <input ng-model="student.gender" type="text" placeholder="Gender">
+    <md-input-container layout="row">
+      <!-- <md-icon md-svg-src="assets/images/gender-512px.svg" class="name"></md-icon>
+      <input ng-model="student.gender" type="text" placeholder="Gender"> -->
+      <md-icon md-svg-src="assets/images/gender-512px.svg" class="name"></md-icon><span>----------</span>
+       <md-select flex = "30" name="myModel" placeholder="Gender" ng-model="student.gender" required>
+        <md-option value="1">Male</md-option>
+        <md-option value="2">Female</md-option>
+      </md-select>
     </md-input-container>
     <md-input-container >
       <md-icon md-svg-src="assets/images/ic_phone_24px.svg"></md-icon>
@@ -37,6 +42,8 @@
       <md-icon md-svg-src="assets/images/calendar.svg"></md-icon>
       <input ng-model="student.dob" type="date" placeholder="Date Of Birth" >
     </md-input-container>
+    <span md-toolbar-tools>upload passport here</span><br><br>
+    <input type="file" name="pic" ng-model="image" onchange="angular.element(this).scope().onFileSelect(this)" accept="image/*"><br><br> 
     <md-button class="md-raised" href="#">SUBMIT</md-button>
   </md-content>
 </div>

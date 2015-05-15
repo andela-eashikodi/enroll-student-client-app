@@ -1,11 +1,6 @@
 <div layout="column" layout-fill="" layout-align="top center" ng-controller="AdminCtrl">
   <div layout="column" layout-fill="" layout-align="top center">
     <md-content>
-      <div>
-        <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md="">
-            Toggle Menu Bar
-        </md-button>
-      </div>
       <div ng-show ="list.length > 0">
       <h2 class="md-title">Student Details</h2>
       <md-input-container md-no-float>
@@ -15,10 +10,10 @@
       </div>
       <md-divider></md-divider>
       <md-list>
-        <md-list-item class="md-3-line" ng-repeat="student in filtered = (list | filter: find)">
-          <img ng-src="{{student.pic}}" id="display-pic">
+        <md-list-item class="md-3-line" ng-repeat="student in filtered = (apidata | filter: find)">
+          <!-- <img ng-src="{{student.pic}}" id="display-pic"> -->
           <div class="md-list-item-text" id="detail">
-            <h1>Reg-Number:      {{student.regnumber}}</h1>
+            <!-- <h1>Reg-Number:      {{student.regnumber}}</h1> -->
             <h1>Firstname:       {{student.firstname}}</h1>
             <h1>Lastname:        {{student.lastname}}</h1>
             <h1>Gender:          {{student.gender}}</h1>
@@ -27,14 +22,8 @@
             <md-divider></md-divider>
           </div>
         </md-list-item>
-
       </md-list>
       <h1 ng-if="filtered <= 0">no result found</h1>
     </md-content>
-  </div>
-  <div>
-    <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md="">
-      Toggle Menu Bar
-    </md-button>
   </div>
 </div>

@@ -2,7 +2,7 @@
 
   <section layout="row" flex="" ng-controller="AdminCtrl">
 
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z4" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
       <md-toolbar class="md-hue-1">
         <h1 class="md-toolbar-tools">Menu</h1>
       </md-toolbar>
@@ -11,12 +11,12 @@
           Close Sidenav Left
         </md-button><br>
         <md-button ui-sref = ".home">
-          <md-icon md-svg-src="assets/images/home-512px.svg"></md-icon><span>  </span>Home
+          <md-icon md-svg-src="assets/images/home-512px.svg"></md-icon><span>  </span>Profile
         </md-button>
         <md-button ui-sref = ".create">
           <md-icon md-svg-src="assets/images/add-user.svg"></md-icon><span>  </span>Register New Student
         </md-button>
-        <md-button ui-sref = ".list" ng-click="loadData()">
+        <md-button ui-sref = ".list" ng-click="loadData('students')">
           <md-icon md-svg-src="assets/images/multy-user.svg"></md-icon><span>  </span>View Students Profile
         </md-button>
       </md-content>

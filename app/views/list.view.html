@@ -1,4 +1,4 @@
-<div layout="column" layout-fill="" layout-align="top center" ng-controller="AdminCtrl">
+<div layout="column" layout-fill="" layout-align="top center" ng-controller="AdminCtrl" data-ng-init="loadData('students')">
   <div layout="column" layout-fill="" layout-align="top center">
     <md-content>
       <div ng-show ="list.length > 0">
@@ -8,17 +8,19 @@
         <input type="text" placeholder="Search by lastname" ng-model="find.lastname" />
       </md-input-container>
       </div>
+      <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
       <md-divider></md-divider>
       <md-list>
-        <md-list-item class="md-3-line" ng-repeat="student in filtered = (apidata | filter: find)">
+        <md-list-item class="md-3-line" ng-repeat="student in filtered = ( list | filter: find)">
           <!-- <img ng-src="{{student.pic}}" id="display-pic"> -->
           <div class="md-list-item-text" id="detail">
-            <!-- <h1>Reg-Number:      {{student.regnumber}}</h1> -->
-            <h1>Firstname:       {{student.firstname}}</h1>
-            <h1>Lastname:        {{student.lastname}}</h1>
-            <h1>Gender:          {{student.gender}}</h1>
-            <h1>State Of Origin: {{student.state}}</h1>
-            <h1>Date Of Origin:  {{student.dob}}</h1>
+            <h1>Reg-Number:      {{student.regnumber}}</h1>
+            <h4>Firstname:       {{student.firstname}}</h4>
+            <h4>Lastname:        {{student.lastname}}</h4>
+            <h4>Gender:          {{student.gender}}</h4>
+            <h4>State Of Origin: {{student.state}}</h4>
+            <h4>created at:      {{student.created_at | date}}</h4>
+            <!-- <h4>Date Of Birth:  {{student.dob | date}}</h4> -->
             <md-divider></md-divider>
           </div>
         </md-list-item>

@@ -1,58 +1,94 @@
 'use strict';
-App.controller('AdminCtrl', ['$scope', 'ApiService', function ($scope, Api){
+App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', function ($scope, ApiService, $location, AppService){
+
+  $scope.userfirst = "";
+  $scope.userlast = "";
+  $scope.usermail = "";
+  $scope.username = "";
+  $scope.userpassword = "";
+  var signParam = {};
+  var signData = "";
+
+  $scope.signupUser = function(){
+    $scope.signing = true;
+    signParam.firstname = $scope.userfirst;
+    signParam.lastname = $scope.userlast;
+    signParam.email = $scope.usermail;
+    signParam.username = $scope.username;
+    signParam.password = $scope.userpassword;
+
+    ApiService.signupUser(signParam).then(function(res){
+      $scope.signing = false;
+      signParam = {};
+      if(res.data.username===undefined){
+        $scope.nametaken = true;
+      }
+      else {
+        var usr = res.data.username;
+        localStorage.setItem('usrn', angular.toJson(usr));
+        $scope.loadProfile(usr);
+      }
+    });
+    
+  };
+
+  $scope.loginname = "";
+  $scope.loginpassword = "";
+  $scope.loginUser = function(){
+    $scope.signing = true;
+    var username = $scope.loginname;
+    var password = $scope.loginpassword;
+
+    ApiService.prof(username).then(function(res){
+      if (res.data[0]===undefined){
+        $scope.loginvalidname = true;
+        $scope.signing = false;
+      }
+      else {
+        if(res.data[0].key!==password){
+          $scope.loginvalidpass = true;
+          $scope.signing = false;
+        }
+        else {
+          $scope.signing = false;
+          var usr = username;
+          localStorage.setItem('usrn', angular.toJson(usr));
+          $location.url('/admin/home');
+        }
+      }
+    });
+  };
+
   $scope.onFileSelect = function(element) {
     var photofile = element.files[0];
     var reader = new FileReader();
     reader.onload = function(e) {
         $scope.$apply(function() {
           $scope.prev_img = e.target.result;
-          console.log($scope.prev_img, 'scopes prev_img');
+          // console.log($scope.prev_img);
         });
     };
     reader.readAsDataURL(photofile);
   };
   
-  $scope.loadData = function(e){
-    Api.apiData().then(function(res){
-      console.log(res);
+  $scope.removeUser = function(idd){
+    console.log(idd);
+  }
+
+  $scope.loadData = function(endpoint){
+    $scope.loading = true;
+    ApiService.apiData(endpoint).then(function(res){
+      $scope.list = res.data;
+      $scope.loading = false;
     });
   };
 
-  $scope.list = [
-    {
-      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
-      regnumber:43,
-      firstname:'emeka',
-      lastname: 'ashikodi',
-      gender: 'male',
-      state: 'imo',
-      dob: '11-11-2000'
-    },
-    {
-      pic:'http://img3.wikia.nocookie.net/__cb20130716065905/marvel_dc/images/0/09/Passport_picture.jpg',
-      regnumber:44,
-      firstname:'steven',
-      lastname: 'sunday',
-      gender: 'male',
-      state: 'kaduna',
-      dob: '11-11-1995'
-    },
-     {
-      pic:'http://emeagwali.com/photos/stock/onitsha-nigerian-passport-1973/philip-emeagwali-nigerian-passport-portrait-1973.jpg',
-      regnumber:43,
-      firstname:'emeka',
-      lastname: 'ashikodi',
-      gender: 'male',
-      state: 'imo',
-      dob: '11-11-2000'
-    }
-  ];
-}]);
-
-App.factory('ApiService', ['$http', function($http){
-  return {
-    apiData : function(){
-      return $http.get('https://student-enrol.herokuapp.com/api/v1/students?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NTRjYWVhMWQ5ZjUwYmEwMTVhZTg4MWMiLCJmaXJzdG5hbWUiOiJvbnllIiwibGFzdG5hbWUiOiJhc2hpa29kaSIsImVtYWlsIjoiZW1la2EuYXNoaWtvZGlAYW5kZWxhLmNvIiwidXNlcm5hbWUiOiJhc2hpa29kaSIsInBhc3N3b3JkIjoiYXNoaWtvZGkiLCJfX3YiOjB9.sL_rPab9RdaQX_ULMbxiI49DR8oY0e7r3aRk7utJ_yo');
-    }
+  $scope.loadProfile = function(){
+    var usr = angular.fromJson(localStorage.getItem('usrn'));
+    ApiService.prof(usr).then(function(resp){
+      $scope.infos = resp.data;
+      $location.url('/admin/home');
+    });
   };
+
 }]);

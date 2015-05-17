@@ -2,9 +2,27 @@
 
 var App = angular.module('Enroll', ['ui.router', 'ngMaterial']);
 
+App.service('AppService', function() {
+  var prof; 
+
+  this.addProf = function(usr){
+
+    prof = usr;
+  };
+
+  this.getProf = function(){
+    return prof;
+  };
+
+  // return {
+  //   addText: this.addText,
+  //   getText: this.getText
+  // };
+});
+
 App.config(function($stateProvider, $urlRouterProvider){
 
-  $urlRouterProvider.otherwise('/admin/home');
+  $urlRouterProvider.otherwise('/login');
 
   $stateProvider
     .state('login',{

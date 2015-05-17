@@ -15,6 +15,17 @@
   margin-left: 40px;
 }
 
+.prof-image {
+    position: relative;
+    left: -10px;
+}
+
+.blu {
+  background: black;
+  color: white;
+}
+
+
 /*#menu {
   position: fixed;
 }*/

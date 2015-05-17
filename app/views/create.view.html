@@ -1,52 +1,53 @@
 <div layout="column" ng-controller="AdminCtrl">
   <br/>
+  <md-card class="md-whiteframe-z2" ng-show="regtaken">
+    <md-card-content style="background:#e9967a">
+      <p>Registration Number Exists</p>
+    </md-card-content>
+  </md-card>
+  <md-progress-linear md-mode="indeterminate" ng-show="registration"></md-progress-linear>
   <md-content layout-padding class="autoScroll">
     <form name="userForm">
       <md-input-container layout="row" >
         <md-icon md-svg-src="assets/images/report-512px.svg" class="name"></md-icon>
         <input flex= "15" ng-model="regnumber" type="number" placeholder="Registration number ">
       </md-input-container>
+
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
-        <input flex="30" ng-model="firstname" type="text" placeholder="First Name">
+        <input flex="30" ng-model="studentFn" type="text" placeholder="First Name">
       </md-input-container>
+
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
-        <input flex="30" ng-model="lastname" type="text" placeholder="Last Name">
+        <input flex="30" ng-model="studentLn" type="text" placeholder="Last Name">
       </md-input-container>
+
       <md-input-container layout="row">
-        <!-- <md-icon md-svg-src="assets/images/gender-512px.svg" class="name"></md-icon>
-        <input ng-model="gender" type="text" placeholder="Gender"> -->
-        <md-icon md-svg-src="assets/images/gender-512px.svg" class="name"></md-icon>
-          --------
-         <md-select flex = "30" name="myModel" placeholder="Gender" ng-model="gender" required>
+         <div><md-icon md-svg-src="assets/images/gender-512px.svg" class="name"></md-icon></div>
+         <md-select flex = "30" placeholder="Gender" ng-model="gender" required>
           <md-option value="1">Male</md-option>
           <md-option value="2">Female</md-option>
         </md-select>
       </md-input-container>
+
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/ic_phone_24px.svg"></md-icon>
-        <input flex="30" ng-model="phone" type="text" placeholder="Phone Number">
+        <input flex="30" ng-model="phone" type="number" placeholder="Phone Number">
       </md-input-container>
-      <!-- <md-input-container layout="row">
-        <md-icon md-svg-src="assets/images/ic_email_24px.svg" class="email"></md-icon>
-        <input flex="30" ng-model="email" type="email" placeholder="Email">
-      </md-input-container>
-      <md-input-container layout="row">
-        <md-icon md-svg-src="assets/images/ic_place_24px.svg"></md-icon>
-        <input flex="30" ng-model="address" type="text" placeholder="Address" >
-      </md-input-container> -->
+
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/ic_place_24px.svg"></md-icon>
         <input flex="30" ng-model="state" type="text" placeholder="State Of Origin" >
       </md-input-container>
+
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/calendar.svg"></md-icon>
         <input flex="15" ng-model="dob" type="date" placeholder="Date Of Birth" >
       </md-input-container>
       <!-- <span md-toolbar-tools>upload passport here</span><br><br>
       <input type="file" name="pic" ng-model="image" onchange="angular.element(this).scope().onFileSelect(this)" accept="image/*"><br><br>  -->
-      <md-button class="md-raised">SUBMIT</md-button>
+      <md-button class="md-raised"  ng-disabled="userForm.$invalid" ng-click="addStudent()">SUBMIT</md-button>
     </form>
   </md-content>
 </div>

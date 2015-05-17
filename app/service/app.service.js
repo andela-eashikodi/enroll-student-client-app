@@ -1,13 +1,8 @@
 'use strict';
 
 App.factory('ApiService', ['$q','$http', function($q, $http){
-  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NTRjYWVhMWQ5ZjUwYmEwMTVhZTg4MWMiLCJmaXJzdG5hbWUiOiJvbnllIiwibGFzdG5hbWUiOiJhc2hpa29kaSIsImVtYWlsIjoiZW1la2EuYXNoaWtvZGlAYW5kZWxhLmNvIiwidXNlcm5hbWUiOiJhc2hpa29kaSIsInBhc3N3b3JkIjoiYXNoaWtvZGkiLCJfX3YiOjB9.sL_rPab9RdaQX_ULMbxiI49DR8oY0e7r3aRk7utJ_yo';
+  var token = angular.fromJson(localStorage.getItem('usertoken'));
 
-  var deferred  = {};
-
-  // if(!$localStorage.userToken) {
-  //   $localStorage.userToken = {};
-  // }
 
   return {
     apiData : function(endpoint){
@@ -20,6 +15,22 @@ App.factory('ApiService', ['$q','$http', function($q, $http){
 
     prof: function(userid){
       return $http.get("https://student-enrol.herokuapp.com/api/v1/user/"+userid+"?token="+token);
+    },
+
+    rmv: function(userid){
+      return $http.delete("https://student-enrol.herokuapp.com/api/v1/user/"+userid+"?token="+token);
+    },
+
+    updateUser: function(userid, params){
+      return $http.put("https://student-enrol.herokuapp.com/api/v1/user/"+userid+"?token="+token, params);
+    },
+
+    auth: function(params){
+      return $http.post("https://student-enrol.herokuapp.com/api/v1/authenticate", params);
+    },
+
+    regStudent: function(params){
+      return $http.post("https://student-enrol.herokuapp.com/api/v1/students?token="+token, params);
     }
   };
 }]);

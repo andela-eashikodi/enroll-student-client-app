@@ -14,7 +14,7 @@
       </md-grid-tile-footer>
     </md-grid-tile>
     <md-grid-tile style="background:#b9f6ca">
-    <md-button ui-sref="login">
+    <md-button ui-sref="login" aria-label="sign out">
       <img src="../../assets/images/log_off.png" alt="" class="prof-image">
     </md-button>
       <md-grid-tile-footer>
@@ -22,7 +22,7 @@
       </md-grid-tile-footer>
     </md-grid-tile>
     <md-grid-tile style="background:#84ffff">
-    <md-button ng-click="removeUser($event)">
+    <md-button ng-click="removeUser()" aria-label="delete account">
     <img src="../../assets/images/remove-user.png">
     </md-button>
       <md-grid-tile-footer>
@@ -30,7 +30,7 @@
       </md-grid-tile-footer>
     </md-grid-tile>
     <md-grid-tile style="background:#8b8378" md-rowspan="2">
-    <md-button ui-sref="admin.list">
+    <md-button ui-sref="admin.list" aria-label="view all">
       <img src="../../assets/images/view-all.png">
     </md-button>
       <md-grid-tile-footer>
@@ -38,7 +38,7 @@
       </md-grid-tile-footer>
     </md-grid-tile>
     <md-grid-tile style="background:#ff8a80" md-rowspan="2">
-    <md-button>
+    <md-button ng-click="editUser($event)" aria-label="edit profile">
       <img src="../../assets/images/edit-user.png">
     </md-button>
       <md-grid-tile-footer>

@@ -31,6 +31,10 @@ App.factory('ApiService', ['$q','$http', function($q, $http){
 
     regStudent: function(params){
       return $http.post("https://student-enrol.herokuapp.com/api/v1/students?token="+token, params);
+    },
+
+    del: function(studentid){
+      return $http.delete("https://student-enrol.herokuapp.com/api/v1/student/"+studentid+"?token="+token);
     }
   };
 }]);

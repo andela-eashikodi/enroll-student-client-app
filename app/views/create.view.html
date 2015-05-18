@@ -10,40 +10,40 @@
     <form name="userForm">
       <md-input-container layout="row" >
         <md-icon md-svg-src="assets/images/report-512px.svg" class="name"></md-icon>
-        <input flex= "15" ng-model="regnumber" type="number" placeholder="Registration number ">
+        <input flex= "15" ng-model="regnumber" type="number" placeholder="Registration number" required />
       </md-input-container>
 
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
-        <input flex="30" ng-model="studentFn" type="text" placeholder="First Name">
+        <input flex="30" ng-model="studentFn" type="text" placeholder="First Name" required />
       </md-input-container>
 
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
-        <input flex="30" ng-model="studentLn" type="text" placeholder="Last Name">
+        <input flex="30" ng-model="studentLn" type="text" placeholder="Last Name" required />
       </md-input-container>
 
       <md-input-container layout="row">
          <div><md-icon md-svg-src="assets/images/gender-512px.svg" class="name"></md-icon></div>
-         <md-select flex = "30" placeholder="Gender" ng-model="gender" required>
-          <md-option value="1">Male</md-option>
-          <md-option value="2">Female</md-option>
+         <md-select flex = "30" placeholder="Gender" ng-model="gender" required />
+          <md-option value="Male">Male</md-option>
+          <md-option value="Female">Female</md-option>
         </md-select>
       </md-input-container>
 
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/ic_phone_24px.svg"></md-icon>
-        <input flex="30" ng-model="phone" type="number" placeholder="Phone Number">
+        <input flex="30" ng-model="phone" type="number" placeholder="Phone Number" required/>
       </md-input-container>
 
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/ic_place_24px.svg"></md-icon>
-        <input flex="30" ng-model="state" type="text" placeholder="State Of Origin" >
+        <input flex="30" ng-model="state" type="text" placeholder="State Of Origin" required />
       </md-input-container>
 
       <md-input-container layout="row">
         <md-icon md-svg-src="assets/images/calendar.svg"></md-icon>
-        <input flex="15" ng-model="dob" type="date" placeholder="Date Of Birth" >
+        <input flex="15" ng-model="dob" type="date" placeholder="Date Of Birth" required />
       </md-input-container>
       <!-- <span md-toolbar-tools>upload passport here</span><br><br>
       <input type="file" name="pic" ng-model="image" onchange="angular.element(this).scope().onFileSelect(this)" accept="image/*"><br><br>  -->

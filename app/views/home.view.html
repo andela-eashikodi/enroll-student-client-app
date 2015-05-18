@@ -1,20 +1,20 @@
 <div data-ng-init = "loadProfile()">
-<md-grid-list md-cols="4" md-gutter="1em"  md-row-height="3:2">
+<md-grid-list md-cols-sm="1" md-cols="4" md-gutter="1em"  md-row-height="3:2">
     <md-grid-tile md-rowspan="3" md-colspan="2" md-colspan-sm="1" style="background:#f5f5f5">
     <img src="../../assets/images/manager.png" alt="" class="prof-image">
     <div ng-repeat="user in infos">
-      <h1><span class="blu" >Username:</span> {{user.username}}</h1>
-      <h1><span class="blu ">Firstname:</span> {{user.firstname}}</h1>
-      <h1><span class="blu">Lastname:</span> {{user.lastname}}</h1>
-      <h3><span class="blu">Email:</span> {{user.email}}</h3>
-      <h3><span class="blu">Date Joined:</span> {{user.created_at | date}}</p>
+      <h1>Username: {{user.username}}</h1>
+      <h1>Firstname: {{user.firstname}}</h1>
+      <h1>Lastname: {{user.lastname}}</h1>
+      <h3>Email: {{user.email}}</h3>
+      <h3>Date Joined: {{user.created_at | date}}</h3>
     </div>
       <md-grid-tile-footer>
         <h2 class="profile">  Profile</h2>
       </md-grid-tile-footer>
     </md-grid-tile>
     <md-grid-tile style="background:#b9f6ca">
-    <md-button ui-sref="login" aria-label="sign out">
+    <md-button ng-click="signOut()" aria-label="sign out">
       <img src="../../assets/images/log_off.png" alt="" class="prof-image">
     </md-button>
       <md-grid-tile-footer>
@@ -22,7 +22,7 @@
       </md-grid-tile-footer>
     </md-grid-tile>
     <md-grid-tile style="background:#84ffff">
-    <md-button ng-click="removeUser()" aria-label="delete account">
+    <md-button ng-click="removeUser($event)" aria-label="delete account">
     <img src="../../assets/images/remove-user.png">
     </md-button>
       <md-grid-tile-footer>
@@ -34,7 +34,7 @@
       <img src="../../assets/images/view-all.png">
     </md-button>
       <md-grid-tile-footer>
-        <h2 class="profile"> View All</h2>
+        <h2 class="profile"> View Registered Students</h2>
       </md-grid-tile-footer>
     </md-grid-tile>
     <md-grid-tile style="background:#ff8a80" md-rowspan="2">

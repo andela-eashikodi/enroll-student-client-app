@@ -21,6 +21,14 @@
             <h4>State Of Origin: {{student.state}}</h4>
             <h4>created at:      {{student.created_at | date}}</h4>
             <!-- <h4>Date Of Birth:  {{student.dob | date}}</h4> -->
+            <md-button class="md-fab" aria-label="edit" style="background:#838b8b" ng-click="editStudent(student)">
+            <md-tooltip>edit</md-tooltip>
+            <md-icon md-svg-src="assets/images/edit-student.svg"></md-icon>
+            </md-button>
+            <md-button class="md-fab" style="background:#f08080" aria-label="delete" ng-click="deleteStudent(student)">
+            <md-tooltip>delete</md-tooltip>
+            delete
+            </md-button>
             <md-divider></md-divider>
           </div>
         </md-list-item>

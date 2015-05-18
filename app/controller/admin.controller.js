@@ -1,42 +1,13 @@
 'use strict';
 App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', '$mdDialog', function ($scope, ApiService, $location, AppService, $mdDialog){
 
-  $scope.regnumber = "";
-  $scope.studentFn = "";
-  $scope.studentLn = "";
-  $scope.gender = "";
-  $scope.phone = "";
-  $scope.state = "";
-  $scope.dob = "";
-  var addParam = {};
-
-  $scope.addStudent = function(){
-    addParam.regnumber  = $scope.regnumber;
-    addParam.firstname = $scope.studentFn;
-    addParam.lastname = $scope.studentLn;
-    addParam.gender = $scope.gender;
-    addParam.phone = $scope.phone;
-    addParam.state = $scope.state;
-    addParam.dob = $scope.dob;
-
-    ApiService.regStudent(addParam).then(function(res){
-      console.log(res);
-      addParam = {};
-      if(res.data.regnumber===undefined){
-        $scope.regtaken = true;
-      }
-      else {
-        $location.url('/admin/list');
-      }
-    });
-  };
-
   $scope.userfirst = "";
   $scope.userlast = "";
   $scope.usermail = "";
   $scope.username = "";
   $scope.userpassword = "";
   var signParam = {};
+  var chk = {};
 
   $scope.signupUser = function(){
     $scope.signing = true;
@@ -45,6 +16,9 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
     signParam.email = $scope.usermail;
     signParam.username = $scope.username;
     signParam.password = $scope.userpassword;
+
+    chk.username = $scope.username;
+    chk.password = $scope.userpassword;
 
     ApiService.signupUser(signParam).then(function(res){
       $scope.signing = false;
@@ -55,10 +29,51 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
       else {
         var usr = res.data.username;
         localStorage.setItem('usrn', angular.toJson(usr));
-        $scope.loadProfile(usr);
+        ApiService.auth(chk).then(function(res){
+          localStorage.setItem('usertoken', angular.toJson(res.data.token));
+          $scope.loadProfile(usr);
+        });
       }
     });  
   };
+
+  $scope.regnumber = "";
+  $scope.studentFn = "";
+  $scope.studentLn = "";
+  $scope.gender = "";
+  $scope.phone = "";
+  $scope.state = "";
+  $scope.dob = "";
+  var addParam = {};
+
+  $scope.addStudent = function(){
+    if(localStorage.getItem('usertoken')){
+      $scope.registration = true;
+      addParam.regnumber  = $scope.regnumber;
+      addParam.firstname = $scope.studentFn;
+      addParam.lastname = $scope.studentLn;
+      addParam.gender = $scope.gender;
+      addParam.phone = $scope.phone;
+      addParam.state = $scope.state;
+      addParam.dob = $scope.dob;
+
+      ApiService.regStudent(addParam).then(function(res){
+        addParam = {};
+        if(res.data.regnumber===undefined){
+          $scope.registration = false;
+          $scope.regtaken = true;
+        }
+        else {
+          $scope.registration = false;
+          $location.url('/admin/list');
+        }
+      });
+    }
+    else {
+      $location.url('/login');
+    }
+  };
+
 
   $scope.loginname = "";
   $scope.loginpassword = "";
@@ -99,16 +114,33 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
     reader.onload = function(e) {
         $scope.$apply(function() {
           $scope.prev_img = e.target.result;
-          // console.log($scope.prev_img);
+          console.log($scope.prev_img);
         });
     };
     reader.readAsDataURL(photofile);
   };
   
-  $scope.removeUser = function(){
-    var usr = angular.fromJson(localStorage.getItem('usrn'));
-    ApiService.rmv(usr).then(function(){
-      $location.url('/login');
+  $scope.removeUser = function(ev){
+    var confirm = $mdDialog.confirm()
+      .title('Delete Account')
+      .content('Are you sure you want to delete account?')
+      .ariaLabel('del user')
+      .ok('Please do it!')
+      .cancel('Not sure anymore')
+      .targetEvent(ev);
+    $mdDialog.show(confirm).then(function() {
+      var usr = angular.fromJson(localStorage.getItem('usrn'));
+      ApiService.rmv(usr).then(function(res){
+        localStorage.removeItem('usertoken');
+        $location.url('/login');
+      });
+    }, function(){});
+  };
+
+  $scope.deleteStudent = function(student){
+    ApiService.del(student.regnumber).then(function(res){
+      console.log(res);
+      $scope.loadData('students');
     });
   };
 
@@ -120,7 +152,7 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
     });
   };
 
-  function Editprof($scope, $mdDialog){
+  function Editprof($scope, $mdDialog, AppService){
     var editinfo = {};
     var usr = angular.fromJson(localStorage.getItem('usrn'));
     ApiService.prof(usr).then(function(res){
@@ -140,6 +172,7 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
 
       ApiService.updateUser(usr, newInfo).then(function(res){
         $mdDialog.hide();
+        console.log(res);
       });
     };
   }
@@ -152,12 +185,22 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
     });
   };
 
+  $scope.signOut = function(){
+    localStorage.removeItem('usertoken');
+    $location.url('/login');
+  };
+
   $scope.loadProfile = function(){
-    var usr = angular.fromJson(localStorage.getItem('usrn'));
-    ApiService.prof(usr).then(function(resp){
-      $scope.infos = resp.data;
-      $location.url('/admin/home');
-    });
+    if(localStorage.getItem('usertoken')){
+      var usr = angular.fromJson(localStorage.getItem('usrn'));
+      ApiService.prof(usr).then(function(resp){
+        $scope.infos = resp.data;
+        $location.url('/admin/home');
+      });
+    }
+    else {
+      $location.url('/login');
+    }
   };
 
 }]);

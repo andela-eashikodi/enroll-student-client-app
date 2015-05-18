@@ -37,7 +37,11 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
     });  
   };
 
-  $scope.regnumber = "";
+  $scope.registerStudent = function(){
+    $scope.regnumber = Math.floor(Math.random()*10000);
+    $location.url('admin/create');
+  };
+
   $scope.studentFn = "";
   $scope.studentLn = "";
   $scope.gender = "";
@@ -85,7 +89,6 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
     det.password = $scope.loginpassword;
 
     ApiService.auth(det).then(function(res){
-      console.log(res.data);
       if(res.data.token!==undefined){
         $scope.signing = false;
         localStorage.setItem('usertoken', angular.toJson(res.data.token));
@@ -137,11 +140,20 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
     }, function(){});
   };
 
-  $scope.deleteStudent = function(student){
-    ApiService.del(student.regnumber).then(function(res){
-      console.log(res);
-      $scope.loadData('students');
-    });
+  $scope.deleteStudent = function(ev, student){
+    var conf = $mdDialog.confirm()
+      .title("Delete "+student.lastname+"'s Profile")
+      .content('Are you sure?')
+      .ariaLabel('del user')
+      .ok('Please do it!')
+      .cancel('Not sure anymore')
+      .targetEvent(ev);
+    $mdDialog.show(conf).then(function() {
+      ApiService.del(student.regnumber).then(function(res){
+        $scope.loadData('students');
+      });
+    }, function(){});
+    
   };
 
   $scope.editUser = function(ev){
@@ -172,7 +184,8 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
 
       ApiService.updateUser(usr, newInfo).then(function(res){
         $mdDialog.hide();
-        console.log(res);
+        // AppService.addProf(res.data[0]);
+
       });
     };
   }
@@ -195,6 +208,7 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
       var usr = angular.fromJson(localStorage.getItem('usrn'));
       ApiService.prof(usr).then(function(resp){
         $scope.infos = resp.data;
+        // console.log(AppService.getProf());
         $location.url('/admin/home');
       });
     }

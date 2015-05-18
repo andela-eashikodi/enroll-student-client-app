@@ -8,10 +8,14 @@
         <input type="text" placeholder="Search by lastname" ng-model="find.lastname" />
       </md-input-container>
       </div>
+<!--       <md-select ng-model="Sort">
+        <md-option value="-created_at" selected="selected" >new</md-option>
+        <md-option value="created_at">old</md-option>
+      </md-select> -->
       <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
       <md-divider></md-divider>
       <md-list>
-        <md-list-item class="md-3-line" ng-repeat="student in filtered = ( list | filter: find)">
+        <md-list-item class="md-3-line" ng-repeat="student in filtered = ( list | filter: find) | orderBy: '-created_at' ">
           <!-- <img ng-src="{{student.pic}}" id="display-pic"> -->
           <div class="md-list-item-text" id="detail">
             <h1>Reg-Number:      {{student.regnumber}}</h1>
@@ -25,7 +29,7 @@
             <md-tooltip>edit</md-tooltip>
             <md-icon md-svg-src="assets/images/edit-student.svg"></md-icon>
             </md-button>
-            <md-button class="md-fab" style="background:#f08080" aria-label="delete" ng-click="deleteStudent(student)">
+            <md-button class="md-fab" style="background:#f08080" aria-label="delete" ng-click="deleteStudent($event, student)">
             <md-tooltip>delete</md-tooltip>
             delete
             </md-button>

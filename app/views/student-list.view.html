@@ -1,4 +1,4 @@
-<div layout="column" layout-fill="" layout-align="top center" ng-controller="AdminCtrl" data-ng-init="loadData('students')">
+<div layout="column" layout-fill="" layout-align="top center" ng-controller="StudentCtrl" data-ng-init="loadData('students')">
   <div layout="column" layout-fill="" layout-align="top center">
     <md-content>
       <div ng-show ="list.length > 0">
@@ -8,10 +8,6 @@
         <input type="text" placeholder="Search by lastname" ng-model="find.lastname" />
       </md-input-container>
       </div>
-<!--       <md-select ng-model="Sort">
-        <md-option value="-created_at" selected="selected" >new</md-option>
-        <md-option value="created_at">old</md-option>
-      </md-select> -->
       <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
       <md-divider></md-divider>
       <md-list>
@@ -25,7 +21,7 @@
             <h4>State Of Origin: {{student.state}}</h4>
             <h4>created at:      {{student.created_at | date}}</h4>
             <!-- <h4>Date Of Birth:  {{student.dob | date}}</h4> -->
-            <md-button class="md-fab" aria-label="edit" style="background:#838b8b" ng-click="editStudent(student)">
+            <md-button class="md-fab" aria-label="edit" style="background:#838b8b" ng-click="editStudent($event, student)">
             <md-tooltip>edit</md-tooltip>
             <md-icon md-svg-src="assets/images/edit-student.svg"></md-icon>
             </md-button>

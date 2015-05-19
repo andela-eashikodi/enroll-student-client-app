@@ -1,4 +1,4 @@
-<div layout="column" ng-controller="AdminCtrl">
+<div layout="column" ng-controller="LoginCtrl">
   <md-content layout layout-align = "center center" class="md-padding">
     <md-card flex="50">
     <md-card class="md-whiteframe-z2" ng-show="loginvalidname">
@@ -26,7 +26,7 @@
         <form name="loginForm">
           <md-input-container>
             <md-icon md-svg-src="assets/images/man-24-512.svg"></md-icon>
-            <input ng-model="loginname" type="text" placeholder="Username" name="emailName" required />
+            <input ng-model="loginname" type="text" placeholder="Username" name="name" required />
           </md-input-container>
           <md-input-container>
             <md-icon md-svg-src="assets/images/lock-24-512.svg" class="name"></md-icon>

@@ -1,4 +1,4 @@
-<div ng-controller="AppCtrl" layout="column" style="height:700px">
+<div ng-controller="SidebarCtrl" layout="column" style="height:700px" >
 
   <section layout="row" flex="" ng-controller="AdminCtrl">
 
@@ -6,17 +6,17 @@
       <md-toolbar class="md-hue-1">
         <h1 class="md-toolbar-tools">Menu</h1>
       </md-toolbar>
-      <md-content layout-padding="" ng-controller="LeftCtrl">
+      <md-content layout-padding="" ng-controller="StudentCtrl">
         <md-button ng-click="close()" class="md-primary" hide-gt-md="">
           Close Sidenav Left
         </md-button><br>
-        <md-button ui-sref = ".home">
+        <md-button ng-click="loadProfile()">
           <md-icon md-svg-src="assets/images/home-512px.svg"></md-icon><span>  </span>Profile
         </md-button>
         <md-button ng-click="registerStudent()">
           <md-icon md-svg-src="assets/images/add-user.svg"></md-icon><span>  </span>Register New Student
         </md-button>
-        <md-button ui-sref = ".list" ng-click="loadData('students')">
+        <md-button ng-click="loadData('students')">
           <md-icon md-svg-src="assets/images/multy-user.svg"></md-icon><span>  </span>View Students Profile
         </md-button>
       </md-content>

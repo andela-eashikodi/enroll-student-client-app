@@ -1,34 +1,36 @@
-<md-dialog arial-label="Edit Student Profile">
+<md-dialog arial-label="Edit your profile">
   <md-toolbar>
        <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
-        <h2>Edit Student Profile</h2>
+        <h2>Edit Your Profile</h2>
        </div>
   </md-toolbar>
   <div layout="column" layout-align="center center" class="dialog-content">
+  <md-progress-linear md-mode="indeterminate" ng-show="editinguser"></md-progress-linear>
   <md-card>
     <md-card-content>
       <form name="loginForm">
         <md-input-container >
           <label>Firstname</label>
-          <input type="text" name="firstname" required ng-model="editfirst">
+          <input type="text" name="firstname" required ng-model="user.firstname">
         </md-input-container>
 
         <md-input-container >
           <label>Lastname</label>
-          <input type="text" name="lastname" required ng-model="editlast">
+          <input type="text" name="lastname" required ng-model="user.lastname">
         </md-input-container>
         
         <md-input-container >
           <label>Email</label>
-          <input type="email" name="email" required ng-model="editmail">
+          <input type="email" name="email" required ng-model="user.email">
         </md-input-container>
 
         <md-input-container >
           <label>Username</label>
-          <input type="text" name="first" required ng-model="editname">
+          <input type="text" name="first" required ng-model="user.username">
         </md-input-container>
 
-        <md-button class="md-raised" ng-disabled="loginForm.$invalid" ng-click="editStudent()">SAVE</md-button>
+        <md-button class="md-raised" ng-disabled="loginForm.$invalid" ng-click="edit()">SAVE</md-button>
+        <md-button class="md-raised md-warn" ng-click="cancel()">CANCEL</md-button>
     </form>
     </md-card-content>
    </md-card>  

@@ -2,7 +2,7 @@
 
 angular
   .module('Enroll')
-  .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil) {
+  .controller('SidebarCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil) {
 
     $scope.toggleLeft = buildToggler('left');
 
@@ -14,9 +14,11 @@ angular
       return debounceFn;
     }
 
-  })
-  .controller('LeftCtrl', function ($scope, $mdSidenav) {
     $scope.close = function () {
       $mdSidenav('left').close();
     };
+
+  })
+  .controller('LeftCtrl', function ($scope, $mdSidenav) {
+    
   });

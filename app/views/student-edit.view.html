@@ -1,0 +1,48 @@
+<md-dialog arial-label="Edit Student Profile">
+  <md-toolbar>
+       <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <h2>Edit Student Profile</h2>
+       </div>
+  </md-toolbar>
+  <div layout="column" layout-align="center center" class="dialog-content">
+  <md-card>
+    <md-card-content>
+      <form name="loginForm">
+        <md-input-container >
+          <label>Firstname</label>
+          <input type="text" name="firstname" required ng-model="editstdtfirst">
+        </md-input-container>
+
+        <md-input-container >
+          <label>Lastname</label>
+          <input type="text" name="lastname" required ng-model="editstdtlast">
+        </md-input-container>
+        
+        <md-input-container >
+          <label>Email</label>
+          <input type="email" name="email" ng-model="editstdtmail">
+        </md-input-container>
+
+        <md-input-container>
+          <label>State Of Origin</label>
+          <input ng-model="editstdtstate" type="text" required />
+        </md-input-container>
+
+        <md-input-container>
+          <md-select placeholder="Gender" ng-model="editstdtgender" required />
+            <md-option value="Male">Male</md-option>
+            <md-option value="Female">Female</md-option>
+          </md-select>
+        </md-input-container>
+
+      <!-- <md-input-container>
+        <label>Date Of Birth</label>
+        <input ng-model="editstdtdob" type="date" required />
+      </md-input-container> -->
+
+        <md-button class="md-raised" ng-disabled="loginForm.$invalid" ng-click="editstdt()">SAVE</md-button>
+    </form>
+    </md-card-content>
+   </md-card>  
+  </div>
+</md-dialog>

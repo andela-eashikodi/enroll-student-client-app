@@ -1,12 +1,12 @@
 'use strict';
 
-App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', 'AppService', '$mdDialog', function ($scope, ApiService, $location, AppService, $mdDialog){
+App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', '$mdDialog', function ($scope, ApiService, $location, $mdDialog){
 
-  $scope.loadData = function(endpoint){
+  $scope.loadData = function(){
     if(localStorage.getItem('userToken')){
       $location.url('/admin/list');
       $scope.loading = true;
-      ApiService.getStudents(endpoint).then(function(res){
+      ApiService.getStudents().then(function(res){
         $scope.list = res.data;
         $scope.loading = false;
       });
@@ -17,7 +17,11 @@ App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', 'AppService'
     
   };
 
-  $scope.registerStudent = function(){
+  $scope.loadView = function(){
+    $location.url('admin/home');
+  };
+
+  $scope.registrationForm = function(){
     if(localStorage.getItem('userToken')){
       $scope.regnumber = Math.floor(Math.random()*10000);
       $location.url('admin/create');
@@ -27,27 +31,11 @@ App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', 'AppService'
     }
   };
 
-  $scope.studentFn = "";
-  $scope.studentLn = "";
-  $scope.gender = "";
-  $scope.phone = "";
-  $scope.state = "";
-  $scope.dob = "";
-  var addParam = {};
-
   $scope.addStudent = function(){
     if(localStorage.getItem('userToken')){
       $scope.registration = true;
-      addParam.regnumber  = $scope.regnumber;
-      addParam.firstname = $scope.studentFn;
-      addParam.lastname = $scope.studentLn;
-      addParam.gender = $scope.gender;
-      addParam.phone = $scope.phone;
-      addParam.state = $scope.state;
-      addParam.dob = $scope.dob;
 
-      ApiService.addStudent(addParam).then(function(res){
-        addParam = {};
+      ApiService.addStudent($scope.student).then(function(res){
         if(res.data.regnumber===undefined){
           $scope.registration = false;
           $scope.regtaken = true;
@@ -55,6 +43,7 @@ App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', 'AppService'
         else {
           $scope.registration = false;
           $location.url('/admin/list');
+          $scope.student = {};
         }
       });
     }
@@ -80,30 +69,36 @@ App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', 'AppService'
   };
 
   $scope.editStudent = function(ev, student){
-    localStorage.setItem('studentId', angular.toJson(student.regnumber));
     $mdDialog.show({
+      clickOutsideToClose: false,
       controller: studentEdit,
-      locals: {regNumber: student.regnumber},
+      escapeToClose: false,
+      locals: {student: student},
       templateUrl: "/app/views/student-edit.view.html",
       targetEvent: ev
     });
   };
 
-  function studentEdit($scope, $mdDialog, AppService, regNumber){
-    var stdt = angular.fromJson(localStorage.getItem('studentId'));
-    var studentId = regNumber;
-    console.log(studentId);
-    var editinfo = {};
-    ApiService.getStudent(stdt).then(function(res){
-      editinfo = res.data[0];
-      $scope.editstdtfirst = editinfo.firstname;
-      $scope.editstdtlast = editinfo.lastname;
-      // $scope.editstdtmail = editinfo.email;
-      $scope.editstdtgender = editinfo.gender;
-      $scope.editstdtphone = editinfo.phone;
-      $scope.editstdtstate = editinfo.state;
-      // $scope.editstdtdob = editinfo.dob;
-    });
+  function studentEdit($scope, $mdDialog, student){
+    var oldStudent = angular.copy(student);
+    $scope.entry = student;
+
+    $scope.edit = function(){
+      $scope.editing = true;
+      ApiService.updateStudent($scope.entry.regnumber, $scope.entry).then(function(res){
+        $scope.editing = false;
+        $mdDialog.hide();
+      });
+    };
+
+    $scope.cancel = function(){
+      $scope.entry.firstname = oldStudent.firstname;
+      $scope.entry.lastname = oldStudent.lastname;
+      $scope.entry.gender = oldStudent.gender;
+      $scope.entry.state = oldStudent.state;
+      $scope.entry.phone = oldStudent.phone;
+      $mdDialog.cancel();
+    };
   }
 
 }]);

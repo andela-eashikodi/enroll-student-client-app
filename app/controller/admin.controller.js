@@ -1,5 +1,5 @@
 'use strict';
-App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', '$mdDialog', function ($scope, ApiService, $location, AppService, $mdDialog){
+App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', '$mdDialog', function ($scope, ApiService, $location, $mdDialog){
   
   $scope.removeUser = function(ev){
     var confirm = $mdDialog.confirm()
@@ -38,7 +38,7 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
       controller: editProfile,
       escapeToClose: false,
       locals: {user: user},
-      templateUrl: "/app/views/admin-edit.user.html",
+      templateUrl: "/app/views/admin-edit.view.html",
       targetEvent: ev
     });
   };
@@ -46,30 +46,32 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', 'AppService', 
   function editProfile($scope, $mdDialog, AppService, user){
     var old_user = angular.copy(user);
     $scope.user = user;
-    var userId = angular.fromJson(localStorage.getItem('userName'));
 
     $scope.edit = function(){
-      $scope.editinguser = true;
-      ApiService.updateUser(user, $scope.user).then(function(res){
-        $scope.editinguser = false;
+      localStorage.setItem('userName', angular.toJson($scope.user.username));
+      $scope.editingUser = true;
+
+      ApiService.updateUser(old_user.username, $scope.user).then(function(res){
+        $scope.editingUser = false;
         $mdDialog.hide();
-        // AppService.addProf(res.data[0]);
       });
     };
 
     $scope.cancel = function(){
-      $scope.user = old_user;
+      $scope.user.lastname = old_user.lastname;
+      $scope.user.firstname = old_user.firstname;
+      $scope.user.username = old_user.username;
+      $scope.user.email = old_user.email;
       $mdDialog.hide();
-      console.log('old user: ', old_user.firstname);
     };
   } 
 
   $scope.loadProfile = function(){
     if(localStorage.getItem('userToken')){
       var userId = angular.fromJson(localStorage.getItem('userName'));
+
       ApiService.getUser(userId).then(function(resp){
         $scope.user = resp.data[0]; // because only one user and it is the first object in the data
-        $location.url('/admin/home');
       });
     }
     else {

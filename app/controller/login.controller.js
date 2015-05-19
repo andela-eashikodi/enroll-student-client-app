@@ -1,60 +1,48 @@
 'use strict';
 
-App.controller('LoginCtrl', ['$scope', 'ApiService', '$location', 'AppService', '$mdDialog', function ($scope, ApiService, $location, AppService, $mdDialog){
-
-  $scope.userfirst = "";
-  $scope.userlast = "";
-  $scope.usermail = "";
-  $scope.username = "";
-  $scope.userpassword = "";
-  var signParam = {};
-  var chk = {};
+App.controller('LoginCtrl', ['$scope', 'ApiService', '$location', '$mdDialog', function ($scope, ApiService, $location, $mdDialog){
 
   $scope.signupUser = function(){
     $scope.signing = true;
-    signParam.firstname = $scope.userfirst;
-    signParam.lastname = $scope.userlast;
-    signParam.email = $scope.usermail;
-    signParam.username = $scope.username;
-    signParam.password = $scope.userpassword;
 
-    chk.username = $scope.username;
-    chk.password = $scope.userpassword;
+    var authUser = {
+      username: $scope.signup.username,
+      password: $scope.signup.password
+    };
 
-    ApiService.signupUser(signParam).then(function(res){
+    console.log($scope.signup);
+    ApiService.signupUser($scope.signup).then(function(res){
+      console.log(res);
       $scope.signing = false;
-      signParam = {};
       if(res.data.username===undefined){
         $scope.nametaken = true;
       }
       else {
-        var usr = res.data.username;
-        localStorage.setItem('userName', angular.toJson(usr));
-        ApiService.auth(chk).then(function(res){
+        var user = res.data.username;
+        localStorage.setItem('userName', angular.toJson(user));
+
+        console.log(authUser);
+        ApiService.auth(authUser).then(function(res){
           localStorage.setItem('userToken', angular.toJson(res.data.token));
-          chk = {};
-          $scope.loadProfile(usr);
+          authUser = {};
+          // $scope.loadProfile(user);
+          $location.url('/admin/home');
+          $scope.signup = {};
         });
       }
     });  
   };
 
-  $scope.loginname = "";
-  $scope.loginpassword = "";
-
   $scope.loginUser = function(){
     $scope.signing = true;
-    var det = {};
-    det.username = $scope.loginname;
-    det.password = $scope.loginpassword;
 
-    ApiService.auth(det).then(function(res){
+    ApiService.auth($scope.login).then(function(res){
       if(res.data.token!==undefined){
-        det = {};
         $scope.signing = false;
+        var user = $scope.login.username;
         localStorage.setItem('userToken', angular.toJson(res.data.token));
-        var usr = $scope.loginname;
-        localStorage.setItem('userName', angular.toJson(usr));
+        localStorage.setItem('userName', angular.toJson(user));
+        $scope.login = {};
         $location.url('/admin/home');
       }
       else {

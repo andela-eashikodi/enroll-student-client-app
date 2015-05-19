@@ -26,11 +26,11 @@
         <form name="loginForm">
           <md-input-container>
             <md-icon md-svg-src="assets/images/man-24-512.svg"></md-icon>
-            <input ng-model="loginname" type="text" placeholder="Username" name="name" required />
+            <input ng-model="login.username" maxlength="15" type="text" placeholder="Username" name="name" required />
           </md-input-container>
           <md-input-container>
             <md-icon md-svg-src="assets/images/lock-24-512.svg" class="name"></md-icon>
-            <input ng-model="loginpassword" type="password" placeholder="Password" required />
+            <input ng-model="login.password" maxlength="15" type="password" placeholder="Password" required />
           </md-input-container>
           <md-button class="md-raised" ng-disabled="loginForm.$invalid" ng-click="loginUser()" >LOGIN</md-button>
           </form>
@@ -44,23 +44,23 @@
         <form name="signupForm">
           <md-input-container>
             <md-icon md-svg-src="assets/images/man-24-512.svg"></md-icon>
-            <input ng-model="userfirst" type="text" placeholder="Firstname" required />
+            <input ng-model="signup.firstname" maxlength="15" type="text" placeholder="Firstname" required />
           </md-input-container>
           <md-input-container>
             <md-icon md-svg-src="assets/images/man-24-512.svg"></md-icon>
-            <input ng-model="userlast" type="text" placeholder="Lastname" required />
+            <input ng-model="signup.lastname" maxlength="15" type="text" placeholder="Lastname" required />
           </md-input-container>
           <md-input-container>
             <md-icon md-svg-src="assets/images/ic_email_24px.svg"></md-icon>
-            <input ng-model="usermail" type="email" placeholder="Email Address" required />
+            <input ng-model="signup.email" maxlength="15" type="email" placeholder="Email Address" required />
           </md-input-container>
           <md-input-container>
             <md-icon md-svg-src="assets/images/man-24-512.svg"></md-icon>
-            <input ng-model="username" type="text" placeholder="Username" required />
+            <input ng-model="signup.username" maxlength="15" type="text" placeholder="Username" required />
           </md-input-container>
           <md-input-container>
             <md-icon md-svg-src="assets/images/lock-24-512.svg"></md-icon>
-            <input ng-model="userpassword" type="password" placeholder="Password" required />
+            <input ng-model="signup.password" maxlength="15" type="password" placeholder="Password" required />
           </md-input-container>
           <md-button class="md-raised" ng-disabled="signupForm.$invalid" ng-click="signupUser()">SIGNUP</md-button>
         </form>

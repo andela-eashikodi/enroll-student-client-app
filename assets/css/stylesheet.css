@@ -1,34 +1,11 @@
-#sidebar {
-  min-height: 900px;
-  max-height: auto;
-}
-
-#display-pic {
-  width: 200px;
-}
-
 .profile {
-  margin-left: 40px;
+  margin-left: 2.500em;
 }
 
 #detail {
-  margin-left: 40px;
+  margin-left: 2.500em;
 }
 
 .prof-image {
     position: relative;
-    left: -10px;
 }
-
-.blu {
-  color: white;
-}
-
-
-/*#menu {
-  position: fixed;
-}*/
-
-/*#listview {
-  margin-left: 100px;
-}*/

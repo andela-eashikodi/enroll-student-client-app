@@ -15,7 +15,7 @@ App.config(function($stateProvider, $urlRouterProvider){
       url: '/admin',
       templateUrl: 'app/views/admin.view.html'
     })
-    .state('admin.create',{
+    .state('admin.create', {
       url: '/create',
       templateUrl: 'app/views/student-create.view.html'
     })

@@ -84,7 +84,7 @@ App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', '$mdDialog',
       controller: studentEdit,
       escapeToClose: false,
       locals: {student: student},
-      templateUrl: "/app/views/student-edit.view.html",
+      templateUrl: "app/views/student-edit.view.html",
       targetEvent: ev
     });
   };

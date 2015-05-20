@@ -38,7 +38,7 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', '$mdDialog', f
       controller: editProfile,
       escapeToClose: false,
       locals: {user: user},
-      templateUrl: "/app/views/admin-edit.view.html",
+      templateUrl: "app/views/admin-edit.view.html",
       targetEvent: ev
     });
   };

@@ -43,7 +43,7 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', '$mdDialog', f
     });
   };
 
-  function editProfile($scope, $mdDialog, AppService, user){
+  function editProfile($scope, $mdDialog, user){
     var old_user = angular.copy(user);
     $scope.user = user;
 
@@ -69,7 +69,6 @@ App.controller('AdminCtrl', ['$scope', 'ApiService', '$location', '$mdDialog', f
   $scope.loadProfile = function(){
     if(localStorage.getItem('userToken')){
       var userId = angular.fromJson(localStorage.getItem('userName'));
-
       ApiService.getUser(userId).then(function(resp){
         $scope.user = resp.data[0]; // because only one user and it is the first object in the data
       });

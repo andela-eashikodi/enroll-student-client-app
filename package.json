@@ -28,6 +28,7 @@
     "protractor": "^2.0.0"
   },
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3"
+    "bcrypt-nodejs": "0.0.3",
+    "karma": "^0.12.32"
   }
 }

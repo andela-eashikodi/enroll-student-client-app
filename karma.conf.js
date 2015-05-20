@@ -1,11 +1,11 @@
 // Karma configuration
-// Generated on Tue May 12 2015 15:06:16 GMT+0100 (WAT)
+// Generated on Mon Apr 27 2015 15:37:59 GMT+0100 (WAT)
 
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: './',
+    basePath: '',
 
 
     // frameworks to use
@@ -15,13 +15,18 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'libs/angular/angular.js',
-      
-      'libs/**/*.js',
-      'libs/angular-mocks/angular-mocks.js',
-      'app/module/*.js',
-      'unit-test/*.js'
-
+        'libs/angular/angular.js',
+        'libs/angular-mocks/angular-mocks.js',
+        'libs/angular-ui-router/release/angular-ui-router.js',
+        'libs/angular-aria/angular-aria.js',
+        'libs/angular-animate/angular-animate.js',
+        'libs/angular-material/angular-material.js',
+        'app/module/app.module.js',
+        'app/service/app.service.js',
+        'app/controller/admin.controller.js',
+        'app/controller/login.controller.js',
+        'app/controller/student.controller.js',
+        'unit-test/*.js'
     ],
 
 
@@ -62,11 +67,6 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
-
-    plugins : [
-      'karma-chrome-launcher',
-      'karma-jasmine'
-    ],
 
 
     // Continuous Integration mode

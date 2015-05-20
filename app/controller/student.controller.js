@@ -23,8 +23,17 @@ App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', '$mdDialog',
 
   $scope.registrationForm = function(){
     if(localStorage.getItem('userToken')){
-      $scope.regnumber = Math.floor(Math.random()*10000);
-      $location.url('admin/create');
+      var newRegnumber = Math.floor(Math.random()*10000);
+      ApiService.getStudents().then(function(res){
+        var i, len =res.data.length;
+        for(i = 0; i < len; i++){
+          if(newRegnumber === res.data[i].regnumber){
+            newRegnumber = Math.floor(Math.random()*10000);
+          }
+        }
+        $scope.regnumber = newRegnumber;
+        $location.url('admin/create');
+      });
     }
     else {
       $location.url('/login');
@@ -34,6 +43,7 @@ App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', '$mdDialog',
   $scope.addStudent = function(){
     if(localStorage.getItem('userToken')){
       $scope.registration = true;
+      $scope.student.regnumber = $scope.regnumber;
 
       ApiService.addStudent($scope.student).then(function(res){
         if(res.data.regnumber===undefined){
@@ -58,11 +68,11 @@ App.controller('StudentCtrl', ['$scope', 'ApiService', '$location', '$mdDialog',
       .content('Are you sure?')
       .ariaLabel('del user')
       .ok('Please do it!')
-      .cancel('Not sure anymore')
+      .cancel('No')
       .targetEvent(ev);
     $mdDialog.show(confirm).then(function() {
       ApiService.deleteStudent(student.regnumber).then(function(res){
-        $scope.loadData('students');
+        $scope.loadData();
       });
     });
     

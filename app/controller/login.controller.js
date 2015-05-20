@@ -10,9 +10,7 @@ App.controller('LoginCtrl', ['$scope', 'ApiService', '$location', '$mdDialog', f
       password: $scope.signup.password
     };
 
-    console.log($scope.signup);
     ApiService.signupUser($scope.signup).then(function(res){
-      console.log(res);
       $scope.signing = false;
       if(res.data.username===undefined){
         $scope.nametaken = true;
@@ -25,7 +23,6 @@ App.controller('LoginCtrl', ['$scope', 'ApiService', '$location', '$mdDialog', f
         ApiService.auth(authUser).then(function(res){
           localStorage.setItem('userToken', angular.toJson(res.data.token));
           authUser = {};
-          // $scope.loadProfile(user);
           $location.url('/admin/home');
           $scope.signup = {};
         });

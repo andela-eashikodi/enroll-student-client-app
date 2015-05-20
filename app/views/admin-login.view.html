@@ -32,7 +32,7 @@
             <md-icon md-svg-src="assets/images/lock-24-512.svg" class="name"></md-icon>
             <input ng-model="login.password" maxlength="15" type="password" placeholder="Password" required />
           </md-input-container>
-          <md-button class="md-raised" ng-disabled="loginForm.$invalid" ng-click="loginUser()" >LOGIN</md-button>
+          <md-button class="md-raised" id="login" ng-disabled="loginForm.$invalid" ng-click="loginUser()" >LOGIN</md-button>
           </form>
       </md-content>
     </md-tab>

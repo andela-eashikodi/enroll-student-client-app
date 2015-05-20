@@ -13,10 +13,10 @@
         <md-button ui-sref=".home">
           <md-icon md-svg-src="assets/images/home-512px.svg"></md-icon><span>  </span>Profile
         </md-button>
-        <md-button ui-sref=".create">
+        <md-button id="createStudent" ui-sref=".create">
           <md-icon md-svg-src="assets/images/add-user.svg"></md-icon><span>  </span>Register New Student
         </md-button>
-        <md-button ng-click="loadData('students')">
+        <md-button id="viewStudents" ng-click="loadData()">
           <md-icon md-svg-src="assets/images/multy-user.svg"></md-icon><span>  </span>View Students Profile
         </md-button>
       </md-content>

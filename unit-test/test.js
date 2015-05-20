@@ -19,8 +19,19 @@ describe('Enroll App', function(){
     expect(AdminCtrl).toBeDefined();
     expect(LoginCtrl).toBeDefined();
     expect(StudentCtrl).toBeDefined();
-    expect(AdminScope.removeUser).toBeDefined();
+    expect(AdminScope).toBeDefined();
     expect(LoginScope).toBeDefined();
     expect(StudentScope).toBeDefined();
   });
+
+  describe('Admin Ctrl', function(){
+    it('should load user profile', function(){
+      expect(AdminScope.loadProfile).toBeDefined();
+    });
+
+    it('should remove user profile', function(){
+      expect(AdminScope.removeUser).toBeDefined();
+    });
+  });
+
 });

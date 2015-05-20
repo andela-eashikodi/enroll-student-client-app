@@ -1,6 +1,5 @@
 logs/*
 node_modules/
-libs/
 npm-debug.log
 !gitkeep
 tmp

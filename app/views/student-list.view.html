@@ -12,7 +12,6 @@
       <md-divider></md-divider>
       <md-list>
         <md-list-item class="md-3-line" ng-repeat="student in filtered = ( list | filter: find) | orderBy: '-created_at' ">
-          <!-- <img ng-src="{{student.pic}}" id="display-pic"> -->
           <div class="md-list-item-text" id="detail">
             <h1>Reg-Number:      {{student.regnumber}}</h1>
             <h4>Firstname:       {{student.firstname}}</h4>
@@ -20,14 +19,13 @@
             <h4>Gender:          {{student.gender}}</h4>
             <h4>State Of Origin: {{student.state}}</h4>
             <h4>created at:      {{student.created_at | date}}</h4>
-            <!-- <h4>Date Of Birth:  {{student.dob | date}}</h4> -->
             <md-button class="md-fab" aria-label="edit" style="background:#838b8b" ng-click="editStudent($event, student)">
-            <md-tooltip>edit</md-tooltip>
-            <md-icon md-svg-src="assets/images/edit-student.svg"></md-icon>
+              <md-tooltip>edit</md-tooltip>
+              <md-icon md-svg-src="assets/images/edit-student.svg"></md-icon>
             </md-button>
             <md-button class="md-fab" style="background:#f08080" aria-label="delete" ng-click="deleteStudent($event, student)">
-            <md-tooltip>delete</md-tooltip>
-            delete
+              <md-tooltip>delete</md-tooltip>
+              delete
             </md-button>
             <md-divider></md-divider>
           </div>

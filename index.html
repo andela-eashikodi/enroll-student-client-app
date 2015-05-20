@@ -3,22 +3,30 @@
 <head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic">
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
   <link rel="stylesheet" href="libs/angular-material/angular-material.min.css">
+  <link href="assets/images/ashikodi-icon.png" rel="shortcut icon" type="image/x-icon">
   <meta name="viewport" content="initial-scale=1" />
-  <title>FRONT_END</title>
+  <title>Student-Enroll</title>
 </head>
 <body layout = "column">
-<md-toolbar class = "md-hue-2" layout="row">
-  <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Student-Enroll</h1>
+<md-toolbar class = "md-hue-4" layout="row" id="header">
+  <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Student-Enroll-Portal</h1>
 </md-toolbar>
-<div ng-view></div>
-<script type="text/javascript" src="app/js/jquery.js"></script>
+<md-content>
+  <div ui-view></div>
+</md-content>
 <script type="text/javascript" src="libs/angular/angular.js"></script>
+<script type="text/javascript" src="libs/angular-ui-router/release/angular-ui-router.js"></script>
 <script type="text/javascript" src="libs/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="libs/angular-animate/angular-animate.js"></script>
 <script type="text/javascript" src="libs/angular-aria/angular-aria.js"></script>
 <script type="text/javascript" src="libs/angular-material/angular-material.js"></script>
 <script type="text/javascript" src="app/module/app.module.js"></script>
-<script type="text/javascript" src="app/controller/app.controller.js"></script>
+<script type="text/javascript" src="app/service/app.service.js"></script>
+<script type="text/javascript" src="app/controller/sidebar.controller.js"></script>
+<script type="text/javascript" src="app/controller/admin.controller.js"></script>
+<script type="text/javascript" src="app/controller/login.controller.js"></script>
+<script type="text/javascript" src="app/controller/student.controller.js"></script>
 </body>
 </html>

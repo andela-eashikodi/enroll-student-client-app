@@ -1,0 +1,48 @@
+<div layout="column" ng-controller="StudentCtrl" data-ng-init="registrationForm()">
+  <br/>
+  <md-card class="md-whiteframe-z2" ng-show="regtaken">
+    <md-card-content style="background:#e9967a">
+      <p>Registration Number Exists</p>
+    </md-card-content>
+  </md-card>
+  <md-progress-linear md-mode="indeterminate" ng-show="registration"></md-progress-linear>
+  <md-content layout-padding class="autoScroll">
+    <form name="userForm">
+
+      <md-input-container layout="row">
+        <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
+        <input flex="30" ng-model="student.firstname" maxlength="15" type="text" placeholder="First Name" required />
+      </md-input-container>
+
+      <md-input-container layout="row">
+        <md-icon md-svg-src="assets/images/ic_person_24px.svg" class="name"></md-icon>
+        <input flex="30" ng-model="student.lastname" maxlength="15" type="text" placeholder="Last Name" required />
+      </md-input-container>
+
+      <md-input-container layout="row">
+         <div><md-icon md-svg-src="assets/images/gender-512px.svg" class="name"></md-icon></div>
+         <md-select flex = "30" placeholder="Gender" ng-model="student.gender" required />
+          <md-option value="Male">Male</md-option>
+          <md-option value="Female">Female</md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container layout="row">
+        <md-icon md-svg-src="assets/images/ic_phone_24px.svg"></md-icon>
+        <input flex="30" ng-model="student.phone" type="number" maxlength="13" placeholder="Phone Number" required/>
+      </md-input-container>
+
+      <md-input-container layout="row">
+        <md-icon md-svg-src="assets/images/ic_place_24px.svg"></md-icon>
+        <input flex="30" ng-model="student.state" type="text" maxlength="15" placeholder="State Of Origin" required />
+      </md-input-container>
+
+      <md-input-container layout="row">
+        <md-icon md-svg-src="assets/images/calendar.svg"></md-icon>
+        <input flex="15" ng-model="student.dob" type="date" maxlength="15" placeholder="Date Of Birth" required />
+      </md-input-container>
+      
+      <md-button class="md-raised" id="newReg" ng-disabled="userForm.$invalid" ng-click="addStudent()">SUBMIT</md-button>
+    </form>
+  </md-content>
+</div>

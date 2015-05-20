@@ -1,0 +1,38 @@
+<md-dialog arial-label="Edit your profile">
+  <md-toolbar>
+       <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <h2>Edit Your Profile</h2>
+       </div>
+  </md-toolbar>
+  <div layout="column" layout-align="center center">
+  <md-progress-linear md-mode="indeterminate" ng-show="editingUser"></md-progress-linear>
+  <md-card>
+    <md-card-content>
+      <form name="loginForm">
+        <md-input-container >
+          <label>Firstname</label>
+          <input type="text" name="firstname" maxlength="15" required ng-model="user.firstname">
+        </md-input-container>
+
+        <md-input-container >
+          <label>Lastname</label>
+          <input type="text" name="lastname" maxlength="15" required ng-model="user.lastname">
+        </md-input-container>
+        
+        <md-input-container >
+          <label>Email</label>
+          <input type="email" name="email" maxlength="20" ng-model="user.email">
+        </md-input-container>
+
+        <md-input-container >
+          <label>Username</label>
+          <input type="text" name="username" maxlength="15" required ng-model="user.username">
+        </md-input-container>
+
+        <md-button class="md-raised" ng-disabled="loginForm.$invalid" ng-click="edit()">SAVE</md-button>
+        <md-button class="md-raised md-warn" ng-click="cancel()">CANCEL</md-button>
+    </form>
+    </md-card-content>
+   </md-card>  
+  </div>
+</md-dialog>

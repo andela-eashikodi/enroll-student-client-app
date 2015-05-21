@@ -9,6 +9,7 @@
     "afterEach": false,
     "module": false,
     "inject": false,
-    "browser": false
+    "browser": false,
+    "element": false
   }
 }
